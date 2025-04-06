@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://lirl8xe4kw0c"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_eu16k"]
+[ext_resource type="Texture2D" uid="uid://dwm4ag13yqxpt" path="res://icon.svg" id="2_ds4dw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_03odr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ds4dw")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ds4dw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60vse"]
+size = Vector2(128, 126.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_klori"]
+radius = 90.5
+
+[node name="player" type="CharacterBody2D"]
+position = Vector2(513, 297)
+script = ExtResource("1_eu16k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+sprite_frames = SubResource("SpriteFrames_03odr")
+animation = &"dead"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_60vse")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_klori")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -62.0
+offset_top = -87.0
+offset_right = 26.0
+offset_bottom = -64.0
+text = "Health: 100"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

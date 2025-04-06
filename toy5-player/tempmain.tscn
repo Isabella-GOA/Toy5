@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://clep84udhnxd2"]
+
+[ext_resource type="PackedScene" uid="uid://lirl8xe4kw0c" path="res://player.tscn" id="1_cwmir"]
+[ext_resource type="Texture2D" uid="uid://dwm4ag13yqxpt" path="res://icon.svg" id="2_5126h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75aon"]
+size = Vector2(129, 129)
+
+[node name="tempmain" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_cwmir")]
+
+[node name="enemystandin" type="CharacterBody2D" parent="."]
+position = Vector2(288, 295)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemystandin"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_75aon")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemystandin"]
+modulate = Color(1, 0.469494, 0.401435, 1)
+texture = ExtResource("2_5126h")
