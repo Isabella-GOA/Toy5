@@ -11,14 +11,23 @@ config_version=5
 [application]
 
 config/name="toy5"
+<<<<<<< Updated upstream
 run/main_scene="res://tempmain.tscn"
+=======
+run/main_scene="res://main.tscn"
+>>>>>>> Stashed changes
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
+<<<<<<< Updated upstream
 window/size/viewport_width=2115
 window/size/viewport_height=1000
+=======
+window/size/viewport_width=1058
+window/size/viewport_height=500
+>>>>>>> Stashed changes
 
 [input]
 
