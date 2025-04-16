@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bs1kb2nvu8lvg"
+path="res://.godot/imported/slow paced.ogg-ecbb1f79c9265e0f1da93625ed44e58e.oggvorbisstr"
+
+[deps]
+
+source_file="res://background music 2/slow paced.ogg"
+dest_files=["res://.godot/imported/slow paced.ogg-ecbb1f79c9265e0f1da93625ed44e58e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

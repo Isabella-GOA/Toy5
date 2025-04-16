@@ -1,0 +1,425 @@
+[gd_scene load_steps=17 format=4 uid="uid://b1j3u5hi72b4s"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ghlqf"]
+[ext_resource type="Texture2D" uid="uid://b6udv3g2kfs6u" path="res://tilemap/Tilesets/Tilled_Dirt_v2.png" id="2_8mk8p"]
+[ext_resource type="Texture2D" uid="uid://dj4sea8enn8j1" path="res://toxic tileset.png" id="3_vmsmr"]
+[ext_resource type="Texture2D" uid="uid://qces628tb2k6" path="res://tilemap/Tilesets/Water.png" id="4_t7yyx"]
+[ext_resource type="PackedScene" uid="uid://5kcg4vjed2yd" path="res://player.tscn" id="5_i41ym"]
+[ext_resource type="AudioStream" uid="uid://ohr483t5ugq2" path="res://game complete music.ogg" id="8_0bdow"]
+[ext_resource type="PackedScene" uid="uid://c8uildcj08v4a" path="res://Spawner.tscn" id="9_lokr4"]
+[ext_resource type="AudioStream" uid="uid://csuqai23286cx" path="res://old game music.ogg" id="9_skygd"]
+[ext_resource type="PackedScene" uid="uid://crmawdphjee45" path="res://Enemy.tscn" id="11_difw0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c2ewm"]
+texture = ExtResource("2_8mk8p")
+texture_region_size = Vector2i(11, 14)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.5, -7, 5.5, -7, 5.5, 7, -5.5, 7)
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:0/0 = 0
+7:1/0 = 0
+7:2/0 = 0
+7:3/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_80ltg"]
+texture = ExtResource("3_vmsmr")
+texture_region_size = Vector2i(48, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_louoy"]
+texture = ExtResource("4_t7yyx")
+texture_region_size = Vector2i(11, 14)
+0:0/0 = 0
+0:0/0/modulate = Color(0.788235, 1, 0.788235, 1)
+0:0/0/z_index = -1
+1:0/0 = 0
+1:0/0/modulate = Color(0.788235, 1, 0.788235, 1)
+1:0/0/z_index = -1
+2:0/0 = 0
+2:0/0/modulate = Color(0.788235, 1, 0.788235, 1)
+2:0/0/z_index = -1
+3:0/0 = 0
+3:0/0/modulate = Color(0.788235, 1, 0.788235, 1)
+3:0/0/z_index = -1
+4:0/0 = 0
+4:0/0/modulate = Color(0.788235, 1, 0.788235, 1)
+4:0/0/z_index = -1
+
+[sub_resource type="TileSet" id="TileSet_aigk6"]
+tile_size = Vector2i(11, 14)
+physics_layer_0/collision_layer = 1
+sources/2 = SubResource("TileSetAtlasSource_80ltg")
+sources/1 = SubResource("TileSetAtlasSource_c2ewm")
+sources/4 = SubResource("TileSetAtlasSource_louoy")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tg73r"]
+size = Vector2(27.0612, 34.8587)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4ifd"]
+size = Vector2(374, 145)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpibg"]
+size = Vector2(195.762, 62.7041)
+
+[node name="main" type="Node2D"]
+position = Vector2(790, 427)
+script = ExtResource("1_ghlqf")
+
+[node name="Layer1" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+use_parent_material = true
+scale = Vector2(12, 10.15)
+tile_map_data = PackedByteArray("AAAAAAAAAQACAAEAAAABAAAAAQADAAYAAAAAAP7/AQADAAcAAAABAP7/AQACAAEAAAACAP7/AQADAAcAAAADAP7/AQADAAcAAAABAP//AQADAAYAAAAAAP//AQACAAEAAAACAP//AQACAAEAAAADAP//AQACAAEAAAAEAP//AQADAAcAAAADAAAAAQADAAYAAAACAAAAAQACAAEAAAD//wAAAQACAAEAAAD//wEAAQACAAEAAAAAAAEAAQAAAAcAAAABAAEAAQAAAAcAAAACAAEAAQACAAEAAAADAAEAAQACAAEAAAADAAIAAQACAAEAAAACAAIAAQACAAEAAAABAAIAAQACAAEAAAAAAAIAAQACAAEAAAD+/wIAAQACAAEAAAAAAAMAAQACAAEAAAABAAMAAQACAAEAAAACAAMAAQACAAEAAAAEAAIAAQACAAEAAAAFAAIAAQACAAEAAAAGAAIAAQADAAcAAAAHAAIABAABAAAAAAADAAMAAQADAAcAAAD//wMAAQACAAEAAAAEAAMAAQACAAEAAAD+/wMAAQACAAEAAAD9/wMAAQACAAEAAAD8/wMAAQACAAEAAAAFAAMAAQACAAcAAAAGAAMABAABAAAAAAAHAAMABAABAAAAAAAIAAMABAABAAAAAAAJAAMABAABAAAAAAD7/wMAAQACAAEAAAD6/wMAAQACAAEAAAAIAAIABAABAAAAAAAJAAIABAABAAAAAAAJAAEAAQAAAAcAAAAIAAEAAQABAAcAAAAHAAEAAQAAAAcAAAAGAAEAAQACAAEAAAAFAAEAAQACAAEAAAAEAAEAAQACAAEAAAD9/wEAAQACAAEAAAD7/wEAAQACAAEAAAD6/wEAAQADAAYAAAD9/wIAAQACAAEAAAD8/wIAAQADAAYAAAD7/wIAAQACAAEAAAD6/wIAAQACAAEAAAD8////AQACAAEAAAD7////AQABAAEAAAD6/wAAAQACAAEAAAAEAP7/AQACAAEAAAAFAP7/AQACAAEAAAAGAP7/AQADAAYAAAAHAP7/BAABAAAAAAD6////AQACAAEAAAD7/wAAAQAAAAcAAAD8/wAAAQADAAYAAAD9/wAAAQACAAEAAAAEAAAAAQACAAEAAAAFAAAAAQADAAcAAAAGAAAAAQACAAEAAAAHAP//AQACAAEAAAAIAP//AQADAAYAAAAJAP//AQADAAYAAAAIAAAAAQACAAEAAAAHAAAAAQACAAEAAAAJAAAAAQACAAEAAAAGAP//AQACAAEAAAAFAP//AQACAAEAAAAJAP7/BAABAAAAAAAIAP7/BAABAAAAAAD8//7/AQACAAEAAAD7//7/AQADAAYAAAD6//7/AQACAAEAAAD6//3/AQABAAEAAAD7//3/AQABAAEAAAD8//3/AQAAAAcAAAAAAP3/AQACAAEAAAABAP3/AQACAAEAAAACAP3/AQACAAEAAAADAP3/AQAAAAcAAAAEAP3/AQACAAEAAAAFAP3/AQACAAEAAAAGAP3/AQACAAEAAAAHAP3/AQACAAEAAAAIAP3/AQACAAEAAAAJAP3/AQACAAEAAAD8/wEAAQADAAcAAAD+/wAAAQADAAcAAAD+/wEAAQADAAcAAAD//wIAAQADAAcAAAD9//3/BAABAAAAAAD+//3/BAABAAAAAAD///3/BAABAAAAAAD///7/BAABAAAAAAD+//7/BAABAAAAAAD+////BAABAAAAAAD9////BAABAAAAAAD9//7/BAABAAAAAAD/////BAABAAAAAAA=")
+tile_set = SubResource("TileSet_aigk6")
+
+[node name="Layer0" type="TileMapLayer" parent="Layer1"]
+y_sort_enabled = true
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAAAAQACAAEAAAABAAAAAQADAAYAAAD///7/AQAMAAcAAAAAAP7/AQADAAcAAAABAP7/AQACAAEAAAACAP7/AQADAAcAAAADAP7/AQADAAcAAAABAP//AQADAAYAAAAAAP//AQACAAEAAAD/////AQAGAAcAAAD+////AQAJAAcAADACAP//AQACAAEAAAADAP//AQACAAEAAAAEAP//AQADAAcAAAADAAAAAQADAAYAAAACAAAAAQACAAEAAAD//wAAAQACAAEAAAD//wEAAQACAAEAAAAAAAEAAQAAAAcAAAABAAEAAQAAAAcAAAACAAEAAQACAAEAAAADAAEAAQACAAEAAAADAAIAAQACAAEAAAACAAIAAQACAAEAAAABAAIAAQACAAEAAAAAAAIAAQACAAEAAAD+/wIAAQACAAEAAAAAAAMAAQACAAEAAAABAAMAAQACAAEAAAACAAMAAQACAAEAAAAEAAIAAQACAAEAAAAFAAIAAQACAAEAAAAGAAIAAQADAAcAAAAHAAIAAQAMAAMAAAADAAMAAQADAAcAAAD//wMAAQACAAEAAAAEAAMAAQACAAEAAAD+/wMAAQACAAEAAAD9/wMAAQACAAEAAAD8/wMAAQACAAEAAAAFAAMAAQACAAcAAAAGAAMAAQAEAAYAAAAHAAMAAQAFAAYAAAAIAAMAAQAFAAYAAAAJAAMAAQAGAAYAAAD7/wMAAQACAAEAAAD6/wMAAQACAAEAAAAIAAIAAQANAAMAAAAJAAIAAQAMAAMAADAJAAEAAQAAAAcAAAAIAAEAAQABAAcAAAAHAAEAAQAAAAcAAAAGAAEAAQACAAEAAAAFAAEAAQACAAEAAAAEAAEAAQACAAEAAAD9/wEAAQACAAEAAAD7/wEAAQACAAEAAAD6/wEAAQADAAYAAAD9/wIAAQACAAEAAAD8/wIAAQADAAYAAAD7/wIAAQACAAEAAAD6/wIAAQACAAEAAAD9////AQAGAAYAADD8////AQACAAEAAAD7////AQABAAEAAAD6/wAAAQACAAEAAAAEAP7/AQACAAEAAAAFAP7/AQACAAEAAAAGAP7/AQADAAYAAAAHAP7/AQAMAAMAAAD6////AQACAAEAAAD7/wAAAQAAAAcAAAD8/wAAAQADAAYAAAD9/wAAAQACAAEAAAAEAAAAAQACAAEAAAAFAAAAAQADAAcAAAAGAAAAAQACAAEAAAAHAP//AQACAAEAAAAIAP//AQADAAYAAAAJAP//AQADAAYAAAAIAAAAAQACAAEAAAAHAAAAAQACAAEAAAAJAAAAAQACAAEAAAAGAP//AQACAAEAAAAFAP//AQACAAEAAAAJAP7/AQAMAAMAADAIAP7/AQANAAMAAAD9//7/AQAMAAcAADD8//7/AQACAAEAAAD7//7/AQADAAYAAAD6//7/AQACAAEAAAD6//3/AQABAAEAAAD7//3/AQABAAEAAAD8//3/AQAAAAcAAAD9//3/AQAGAAcAADD+//3/AQAJAAcAAAD///3/AQAGAAYAAAAAAP3/AQACAAEAAAABAP3/AQACAAEAAAACAP3/AQACAAEAAAADAP3/AQAAAAcAAAAEAP3/AQACAAEAAAAFAP3/AQACAAEAAAAGAP3/AQACAAEAAAAHAP3/AQACAAEAAAAIAP3/AQACAAEAAAAJAP3/AQACAAEAAAD8/wEAAQADAAcAAAD+/wAAAQADAAcAAAD+/wEAAQADAAcAAAD//wIAAQADAAcAAAD5/wMAAQAAAAAAAAD5//z/AQAAAAAAAAD5//3/AQAAAAAAAAD5//7/AQAAAAAAAAD5////AQAAAAAAAAD5/wAAAQAAAAAAAAD5/wEAAQAAAAAAAAD5/wIAAQAAAAAAAAD5/wQAAQAAAAAAAAD6/wQAAQAAAAAAAAD7/wQAAQAAAAAAAAD8/wQAAQAAAAAAAAD9/wQAAQAAAAAAAAD+/wQAAQAAAAAAAAD//wQAAQAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAAKAAMAAQAAAAAAAAAKAAIAAQAAAAAAAAAKAAEAAQAAAAAAAAAKAAAAAQAAAAAAAAAKAP//AQAAAAAAAAAKAP7/AQAAAAAAAAAKAP3/AQAAAAAAAAAKAPz/AQAAAAAAAAAJAPz/AQAAAAAAAAAIAPz/AQAAAAAAAAAHAPz/AQAAAAAAAAAGAPz/AQAAAAAAAAAFAPz/AQAAAAAAAAAEAPz/AQAAAAAAAAADAPz/AQAAAAAAAAACAPz/AQAAAAAAAAABAPz/AQAAAAAAAAAAAPz/AQAAAAAAAAD///z/AQAAAAAAAAD+//z/AQAAAAAAAAD9//z/AQAAAAAAAAD8//z/AQAAAAAAAAD7//z/AQAAAAAAAAD6//z/AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_aigk6")
+
+[node name="Enemy" parent="." instance=ExtResource("11_difw0")]
+visible = false
+position = Vector2(-955, -638)
+
+[node name="player" parent="." instance=ExtResource("5_i41ym")]
+position = Vector2(713, 72)
+
+[node name="background" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_0bdow")
+pitch_scale = 0.73
+autoplay = true
+
+[node name="gameover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_skygd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="pond" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pond"]
+position = Vector2(-194.108, -209.524)
+rotation = -0.0872665
+scale = Vector2(12, 10.15)
+shape = SubResource("RectangleShape2D_tg73r")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="pond"]
+position = Vector2(1100, 502.5)
+shape = SubResource("RectangleShape2D_f4ifd")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="pond"]
+position = Vector2(1122.27, 344.486)
+rotation = -0.0523599
+shape = SubResource("RectangleShape2D_cpibg")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="pond"]
+position = Vector2(1125, -226)
+rotation = -0.0523599
+shape = SubResource("RectangleShape2D_cpibg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(265, 70)
+zoom = Vector2(0.5, 0.5)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -789.0
+offset_top = -426.0
+offset_right = 1335.0
+offset_bottom = 569.0
+color = Color(1, 1, 1, 0)
+
+[node name="lose" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 151.0
+offset_right = 1628.0
+offset_bottom = 326.0
+theme_override_font_sizes/font_size = 128
+text = "You lost, try again?"
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/lose"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.452
+anchor_top = -1.051
+anchor_right = 1.521
+anchor_bottom = 5.516
+offset_left = 27.1281
+offset_top = -0.0749969
+offset_right = -32.4441
+offset_bottom = -53.3
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0.611765)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+offset_left = -789.0
+offset_top = -426.0
+offset_right = 1335.0
+offset_bottom = 569.0
+color = Color(1, 1, 1, 0)
+
+[node name="win" type="Label" parent="ColorRect2"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 151.0
+offset_right = 1750.0
+offset_bottom = 326.0
+theme_override_font_sizes/font_size = 128
+text = "You won! Play again?"
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect2/win"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.452
+anchor_top = -1.051
+anchor_right = 1.521
+anchor_bottom = 5.516
+offset_left = 27.1281
+offset_top = -0.0749969
+offset_right = -32.4441
+offset_bottom = -53.3
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 0.611765)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
+offset_left = -789.0
+offset_top = -426.0
+offset_right = 1335.0
+offset_bottom = 569.0
+color = Color(1, 1, 1, 0)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017
+anchor_top = 0.034
+anchor_right = 0.967
+anchor_bottom = 0.924
+offset_left = -64.108
+offset_top = -47.83
+offset_right = 62.0918
+offset_bottom = 88.62
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.890196, 0.721569, 0.396078, 0.843137)
+
+[node name="menu" type="Label" parent="ColorRect3"]
+layout_mode = 0
+offset_left = -33.0
+offset_top = -28.0
+offset_right = 2158.0
+offset_bottom = 1067.0
+theme_override_font_sizes/font_size = 96
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="ColorRect3/menu"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 37.0
+offset_right = 2068.0
+offset_bottom = 574.0
+theme_override_font_sizes/font_size = 96
+text = "Welcome to Survive
+You must defeat all of the enemies to win. 
+To attack simply press space bar when the 
+axe symbol pops up."
+horizontal_alignment = 1
+
+[node name="start" type="Button" parent="ColorRect3/menu"]
+layout_mode = 0
+offset_left = 868.0
+offset_top = 622.0
+offset_right = 1276.0
+offset_bottom = 777.0
+theme_override_font_sizes/font_size = 96
+text = "Start"
+
+[node name="Button2" type="Button" parent="ColorRect3/menu"]
+layout_mode = 0
+offset_left = 939.0
+offset_top = 810.0
+offset_right = 1235.0
+offset_bottom = 929.0
+theme_override_font_sizes/font_size = 64
+text = "Credits"
+
+[node name="credits" type="Label" parent="ColorRect3"]
+visible = false
+layout_mode = 0
+offset_left = 622.0
+offset_top = 167.0
+offset_right = 1477.0
+offset_bottom = 839.0
+theme_override_font_sizes/font_size = 96
+text = "Developers:
+Isabella Picone
+Muqian Ji
+Kai Maquivar
+Alexander Shadrin"
+horizontal_alignment = 1
+
+[node name="return" type="Button" parent="ColorRect3"]
+visible = false
+layout_mode = 0
+offset_left = 44.0
+offset_top = 31.0
+offset_right = 400.0
+offset_bottom = 127.0
+theme_override_font_sizes/font_size = 64
+text = "Main Menu"
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+visible = false
+offset_left = -789.0
+offset_top = -426.0
+offset_right = 1335.0
+offset_bottom = 569.0
+color = Color(1, 1, 1, 0)
+
+[node name="restart" type="Button" parent="ColorRect4"]
+layout_mode = 0
+offset_left = 789.0
+offset_top = 426.0
+offset_right = 1245.0
+offset_bottom = 609.0
+theme_override_font_sizes/font_size = 128
+text = "Restart"
+
+[node name="SPawner" parent="." instance=ExtResource("9_lokr4")]
+
+[connection signal="attack" from="Enemy" to="player" method="_on_enemy_attack"]
+[connection signal="defend" from="Enemy" to="player" method="_on_enemy_defend"]
+[connection signal="offence" from="Enemy" to="player" method="_on_enemy_offence"]
+[connection signal="dead" from="player" to="." method="_on_player_dead"]
+[connection signal="hit" from="player" to="Enemy" method="_on_player_hit"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="pond" to="player" method="pond"]
+[connection signal="pressed" from="ColorRect3/menu/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ColorRect3/menu/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="ColorRect3/return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="ColorRect4/restart" to="." method="_on_button_pressed"]

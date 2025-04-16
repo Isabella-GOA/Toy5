@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://n6usp0fmkv4t"
+path="res://.godot/imported/strong beat.ogg-23b23ab44bbe922d17149c5d89b11b01.oggvorbisstr"
+
+[deps]
+
+source_file="res://background music 2/strong beat.ogg"
+dest_files=["res://.godot/imported/strong beat.ogg-23b23ab44bbe922d17149c5d89b11b01.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

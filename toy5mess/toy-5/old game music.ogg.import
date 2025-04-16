@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://csuqai23286cx"
+path="res://.godot/imported/old game music.ogg-ea417fb9be424b255017f36bf9aec59d.oggvorbisstr"
+
+[deps]
+
+source_file="res://old game music.ogg"
+dest_files=["res://.godot/imported/old game music.ogg-ea417fb9be424b255017f36bf9aec59d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
