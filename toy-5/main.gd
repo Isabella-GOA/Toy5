@@ -1,14 +1,15 @@
 extends Node2D
 
+var down = false
+var down2 = false
+var down3 = false
+var down4 = false
+var down5 = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if down== true and down2== true and down3== true and down4== true and down5== true:
+		$ColorRect2.show()
+		$ColorRect4.show()
 
 
 func _on_player_dead() -> void:
@@ -43,9 +44,35 @@ func _on_return_pressed() -> void:
 
 
 @onready var enemy = preload("res://Enemy.tscn")
+var enload = 1
 func _on_spawner_timeout() -> void:
-	var ene = enemy.instantiate()
-	position.x = randi_range(-500,700)
-	position.y = randi_range(500,-700)
-	ene.position = position
-	get_node("Enemy").add_child(ene)
+	if enload < 20:
+		var ene = enemy.instantiate()
+		position.x = randi_range(-500,700)
+		position.y = randi_range(500,-700)
+		ene.position = position
+		get_node("Enemy").add_child(ene)
+		enload += 1
+	if enload == 20:
+		$Timer.stop()
+
+
+func _on_enemy_slay() -> void:
+	down = true
+	print('1')
+
+func _on_nemy_slay_2() -> void:
+	down2 = true
+	print('1')
+
+func _on_nemy_slay_3() -> void:
+	down3 = true
+	print('1')
+
+func _on_nemy_slay_4() -> void:
+	down4 = true
+	print('1')
+
+func _on_nemy_slay_5() -> void:
+	down5 = true
+	print('1')

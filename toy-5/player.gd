@@ -9,12 +9,10 @@ signal hit
 var enemy = false
 
 func _physics_process(delta: float) -> void:
-	if enemy == true:
-		if Input.is_action_just_pressed("attack"):
-				emit_signal("hit")
-				$Timer.start()
-				$AnimatedSprite2D.play("attack")
-				$AnimatedSprite2D2.hide()
+	if Input.is_action_just_pressed("attack"):
+		emit_signal("hit")
+		#$Timer.start()
+		$AnimatedSprite2D.play("attack")
 
 	if HEALTH > 0:
 		var direction := Input.get_axis("ui_left", "ui_right")
@@ -42,7 +40,7 @@ func _physics_process(delta: float) -> void:
 		pass
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == "Enemy":
+	if body.name == "Enemy" or body.name == "2nemy" or body.name == "3nemy" or body.name == "4nemy" or body.name == "5nemy":
 		damage = 10
 	if HEALTH > 0:
 		HEALTH -= damage
@@ -52,16 +50,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		$AnimatedSprite2D.play("dead")
 
 
-func _on_area_2d_2_body_entered(body: Node2D) -> void:
-	print(body.name)
-	if body.name == "Enemy":
-		enemy = true
-		$AnimatedSprite2D2.show()
-
-
 func pond(body):
 	if body.name == "player":
 		emit_signal("dead")
+		print('killme')
 		HEALTH = 0
 		$Label.text = "Health: %d" % HEALTH
 		$AnimatedSprite2D.play("dead")
@@ -70,10 +62,3 @@ func pond(body):
 func _on_timer_timeout() -> void:
 	$AnimatedSprite2D.play("idle")
 	$Timer.stop()
-	if enemy == true:
-		$AnimatedSprite2D2.show()
-
-func _on_area_2d_2_body_exited(body: Node2D) -> void:
-	if body.name == "Enemy":
-		enemy = false
-		$AnimatedSprite2D2.hide()

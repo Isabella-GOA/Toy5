@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://crmawdphjee45"]
+[gd_scene load_steps=23 format=3 uid="uid://crmawdphjee45"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_wd1b5"]
 [ext_resource type="Texture2D" uid="uid://b3k6dxjhwk0qk" path="res://slime.png" id="2_ivxgy"]
@@ -63,6 +63,10 @@ region = Rect2(128, 96, 32, 32)
 atlas = ExtResource("2_ivxgy")
 region = Rect2(160, 96, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b86r"]
+atlas = ExtResource("2_ivxgy")
+region = Rect2(168, 312, 56, 104)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_j4w01"]
 animations = [{
 "frames": [{
@@ -124,6 +128,14 @@ animations = [{
 "loop": true,
 "name": &"Walk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7b86r")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20g5n"]
@@ -132,28 +144,39 @@ size = Vector2(80, 80)
 [sub_resource type="CircleShape2D" id="CircleShape2D_oikjq"]
 radius = 1024.0
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_30irp"]
+radius = 112.5
 
-[node name="Enemy" type="CharacterBody2D" parent="."]
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_wd1b5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4.0625, 4)
 sprite_frames = SubResource("SpriteFrames_j4w01")
-animation = &"Walk"
+animation = &"new_animation"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.916156, 0.904378)
 shape = SubResource("RectangleShape2D_20g5n")
 
-[node name="Zone" type="Area2D" parent="Enemy"]
+[node name="Zone" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Zone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone"]
 shape = SubResource("CircleShape2D_oikjq")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
-[connection signal="body_entered" from="Enemy/Zone" to="Enemy" method="_on_zone_body_entered"]
-[connection signal="body_exited" from="Enemy/Zone" to="Enemy" method="_on_zone_body_exited"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+rotation = 0.785398
+shape = SubResource("CircleShape2D_30irp")
+
+[connection signal="body_entered" from="Zone" to="." method="_on_zone_body_entered"]
+[connection signal="body_exited" from="Zone" to="." method="_on_zone_body_exited"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]

@@ -1,13 +1,16 @@
-[gd_scene load_steps=17 format=4 uid="uid://b1j3u5hi72b4s"]
+[gd_scene load_steps=20 format=4 uid="uid://b1j3u5hi72b4s"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ghlqf"]
 [ext_resource type="Texture2D" uid="uid://b6udv3g2kfs6u" path="res://tilemap/Tilesets/Tilled_Dirt_v2.png" id="2_8mk8p"]
 [ext_resource type="Texture2D" uid="uid://dj4sea8enn8j1" path="res://toxic tileset.png" id="3_vmsmr"]
 [ext_resource type="Texture2D" uid="uid://qces628tb2k6" path="res://tilemap/Tilesets/Water.png" id="4_t7yyx"]
 [ext_resource type="PackedScene" uid="uid://5kcg4vjed2yd" path="res://player.tscn" id="5_i41ym"]
-[ext_resource type="Script" path="res://enemy.gd" id="6_dxrdt"]
+[ext_resource type="PackedScene" uid="uid://dptjbdcoc7vfs" path="res://2_nemy.tscn" id="6_opq3i"]
+[ext_resource type="PackedScene" uid="uid://mnnftmp5snn2" path="res://3_nemy.tscn" id="7_ieg6i"]
 [ext_resource type="AudioStream" uid="uid://ohr483t5ugq2" path="res://game complete music.ogg" id="8_0bdow"]
+[ext_resource type="PackedScene" uid="uid://bjpre7t2w13gt" path="res://4_nemy.tscn" id="8_1rhuj"]
 [ext_resource type="AudioStream" uid="uid://csuqai23286cx" path="res://old game music.ogg" id="9_skygd"]
+[ext_resource type="PackedScene" uid="uid://ddxfmof4db1f" path="res://5_nemy.tscn" id="9_xqkcx"]
 [ext_resource type="PackedScene" uid="uid://crmawdphjee45" path="res://Enemy.tscn" id="11_difw0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c2ewm"]
@@ -198,7 +201,18 @@ tile_map_data = PackedByteArray("AAAAAAAAAQACAAEAAAABAAAAAQADAAYAAAD///7/AQAMAAc
 tile_set = SubResource("TileSet_aigk6")
 
 [node name="Enemy" parent="." instance=ExtResource("11_difw0")]
-script = ExtResource("6_dxrdt")
+position = Vector2(-292, 216)
+
+[node name="2nemy" parent="." instance=ExtResource("6_opq3i")]
+position = Vector2(109, 402)
+
+[node name="3nemy" parent="." instance=ExtResource("7_ieg6i")]
+position = Vector2(162, -257)
+
+[node name="4nemy" parent="." instance=ExtResource("8_1rhuj")]
+position = Vector2(-554, -131)
+
+[node name="5nemy" parent="." instance=ExtResource("9_xqkcx")]
 
 [node name="player" parent="." instance=ExtResource("5_i41ym")]
 position = Vector2(713, 72)
@@ -344,8 +358,7 @@ offset_bottom = 574.0
 theme_override_font_sizes/font_size = 96
 text = "Welcome to Survive
 You must defeat all of the enemies to win. 
-To attack simply press space bar when the 
-axe symbol pops up."
+To attack simply press space bar to attack."
 horizontal_alignment = 1
 
 [node name="start" type="Button" parent="ColorRect3/menu"]
@@ -408,15 +421,20 @@ offset_bottom = 609.0
 theme_override_font_sizes/font_size = 128
 text = "Restart"
 
-[node name="Spawner" type="Timer" parent="."]
-autostart = true
-
+[connection signal="slay" from="Enemy" to="." method="_on_enemy_slay"]
+[connection signal="slay2" from="2nemy" to="." method="_on_nemy_slay_2"]
+[connection signal="slay3" from="3nemy" to="." method="_on_nemy_slay_3"]
+[connection signal="slay4" from="4nemy" to="." method="_on_nemy_slay_4"]
+[connection signal="slay5" from="5nemy" to="." method="_on_nemy_slay_5"]
 [connection signal="dead" from="player" to="." method="_on_player_dead"]
 [connection signal="hit" from="player" to="Enemy" method="_on_player_hit"]
+[connection signal="hit" from="player" to="2nemy" method="_on_player_hit"]
+[connection signal="hit" from="player" to="3nemy" method="_on_player_hit"]
+[connection signal="hit" from="player" to="4nemy" method="_on_player_hit"]
+[connection signal="hit" from="player" to="5nemy" method="_on_player_hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="pond" to="player" method="pond"]
 [connection signal="pressed" from="ColorRect3/menu/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="ColorRect3/menu/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="ColorRect3/return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="ColorRect4/restart" to="." method="_on_button_pressed"]
-[connection signal="timeout" from="Spawner" to="." method="_on_spawner_timeout"]

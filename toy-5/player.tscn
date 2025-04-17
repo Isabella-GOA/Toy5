@@ -1,9 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://5kcg4vjed2yd"]
+[gd_scene load_steps=34 format=3 uid="uid://5kcg4vjed2yd"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_eu16k"]
 [ext_resource type="Texture2D" uid="uid://prr6pp425c28" path="res://character/Characters/Basic Charakter Spritesheet.png" id="2_li2md"]
 [ext_resource type="Texture2D" uid="uid://c5js5xbix6brh" path="res://character/Characters/Basic Charakter Actions.png" id="2_xcxbf"]
-[ext_resource type="Texture2D" uid="uid://c4s7jq3bva825" path="res://character/Characters/Tools.png" id="4_d3mbe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ieecc"]
 atlas = ExtResource("2_xcxbf")
@@ -237,28 +236,12 @@ radius = 45.0
 height = 130.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_klori"]
-radius = 90.5
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_nj2ix"]
-radius = 200.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nf3d0"]
-atlas = ExtResource("4_d3mbe")
-region = Rect2(32, 48, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8ospg"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nf3d0")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+radius = 70.0
 
 [node name="player" type="CharacterBody2D"]
 position = Vector2(513, 297)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_eu16k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -270,6 +253,8 @@ animation = &"attack"
 shape = SubResource("CapsuleShape2D_u7tf5")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_klori")
@@ -282,22 +267,8 @@ offset_bottom = -64.0
 theme_override_font_sizes/font_size = 20
 text = "Health: 100"
 
-[node name="Area2D2" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-rotation = 0.785398
-shape = SubResource("CircleShape2D_nj2ix")
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.2
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(46, -48)
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_8ospg")
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
-[connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
